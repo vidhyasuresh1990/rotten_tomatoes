@@ -18,4 +18,4 @@ Used Cocoapods.
 Asynchronous image downloading implemented using the UIImageView category in the AFNetworking library.
 
 
-Gif walkthrough: Refer to file rotten_tomatoes.gif
+Gif walkthrough: Refer to file rotton_tomatoes_final.gif
