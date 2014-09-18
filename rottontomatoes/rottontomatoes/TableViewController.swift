@@ -10,7 +10,8 @@ import UIKit
 
 class TableViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var alertLabel: UILabel!
+       @IBOutlet weak var tableView: UITableView!
     var movies: [NSDictionary] = []
     var refreshControl: UIRefreshControl!
     override func viewDidLoad() {
@@ -59,7 +60,7 @@ class TableViewController: UIViewController , UITableViewDataSource , UITableVie
             tableView.dataSource = self
           
          var neterror = NSErrorPointer()
-        var url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dagqdghwaq3e3mxyrp7kmmj5&limit=20&country=us"
+        var url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=dagqdghwaq3e3mxyrp7kmmj5&limit=20&country=u"
         
         var request = NSURLRequest(URL: NSURL(string : url))
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()
@@ -72,12 +73,14 @@ class TableViewController: UIViewController , UITableViewDataSource , UITableVie
                 
                 
                 if(object["movies"] == nil){
-                    [TWMessageBarManager .sharedInstance() .showMessageWithTitle("Network Error!", description: "Unable to connect to URL", type: TWMessageBarMessageTypeError , duration : 1000 , callback: {
+                   // [TWMessageBarManager .sharedInstance() .showMessageWithTitle("Network Error!", description: "Unable to connect to URL", type: TWMessageBarMessageTypeError , duration : 1000 , callback: {
                         
-                        self.getdata()
-                        }
+                     //   self.getdata()
+                       // }
                         
-                    )]
+                   // )]
+                    self.alertLabel.text = "Network Error!"
+                    
                 }
                 
                 else{
